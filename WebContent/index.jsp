@@ -38,16 +38,15 @@
 			<c:set var="daftarPegawai" value="${toServer.ambilPegawai('get')}"/>
 			<c:forEach items="${daftarPegawai}" var="pegawai">
 				<tr>
-					<td><c:out value="${pegawai.nama}" /><td>
-					<td><c:out value="${pegawai.jenkel}" /><td>
-					<td><c:out value="${pegawai.alamat}" /><td>
+					<td><c:out value="${pegawai.nama}" /></td>
+					<td><c:out value="${pegawai.jenkel}" /></td>
+					<td><c:out value="${pegawai.alamat}" /></td>
 					<td>
 						<a href="EditData?id=${pegawai.idPegawai}">Edit</a>
 						<a href="DeleteData?id=${pegawai.idPegawai}">Delete</a>					
-					<td>					
+					</td>					
 				</tr>
 			</c:forEach>
-			<jsp:useBean id="coba" class="com.app.Coba"/>
 		</tbody>
 		
 		
