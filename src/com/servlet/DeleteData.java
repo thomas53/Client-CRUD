@@ -36,9 +36,12 @@ public class DeleteData extends HttpServlet {
 		pegawai.setIdPegawai(Integer.parseInt(request.getParameter("id")));
 		
 		// mengirim pesan ke server
-		String hasil = new ToServer().send("del",pegawai);
-		request.setAttribute("msg",	hasil);
-		
+		int hasil = new ToServer().send("del",pegawai);
+		if(hasil==1){
+			request.setAttribute("scsMsg",	"Data Berhasil Dihapus");
+		}else{
+			request.setAttribute("errMsg",	"Data Gagal Dihapus");
+		}
 		RequestDispatcher rd = getServletContext().getRequestDispatcher("/index.jsp");
 		rd.forward(request, response);
 	}

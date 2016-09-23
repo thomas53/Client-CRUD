@@ -8,44 +8,66 @@
 <title>Insert title here</title>
 </head>
 <body>
-	${msg}
-	<form action="TambahData" method="POST">
-		Nama : <br>
-		<input type="text" name="nama"/><br>
-		Jenis Kelamin : <br>
-		<input type="radio" id="l" checked=true name="jenkel" value="Laki-Laki"><label for="l">Laki-Laki</label>
-		<input type="radio" id="p" name="jenkel" value="Perempuan"><label for="p">Perempuan</label><br>
-		Alamat : <br>
-		<textarea rows="5" cols="30" name="alamat"></textarea><br>
-		<input type="submit" value="kirim">
-	</form>
-	
-	<table border=1>
-		<thead>
-			<tr>
-				<th>Nama</th>
-				<th>Jenis Kelamin</th>
-				<th>Alamat</th>
-				<th>Aksi</th>
-			</tr>
-		</thead>
-		<tbody>
-			<jsp:useBean id="toServer" class="com.socket.ToServer"/>
-			<c:set var="daftarPegawai" value="${toServer.ambilPegawai('get')}"/>
-			<c:forEach items="${daftarPegawai}" var="pegawai">
+	<center>
+		<form action="TambahData" method="POST">
+			<table style="text-align:left">
 				<tr>
-					<td><c:out value="${pegawai.nama}" /></td>
-					<td><c:out value="${pegawai.jenkel}" /></td>
-					<td><c:out value="${pegawai.alamat}" /></td>
-					<td>
-						<a href="EditData?id=${pegawai.idPegawai}">Edit</a>
-						<a href="DeleteData?id=${pegawai.idPegawai}">Delete</a>					
-					</td>					
+					<td>Nama</td>
+					<td>:</td>
+					<td><input type="text" name="nama"/></td>
 				</tr>
-			</c:forEach>
-		</tbody>
+				<tr>
+					<td>Jenis Kelamin</td>
+					<td>:</td>
+					<td>
+						<input type="radio" id="l" checked=true name="jenkel" value="Laki-Laki"><label for="l">Laki-Laki</label>
+						<input type="radio" id="p" name="jenkel" value="Perempuan"><label for="p">Perempuan</label>
+					</td>
+				</tr>
+				<tr>
+					<td>Alamat</td>
+					<td>:</td>
+					<td><textarea rows="5" cols="30" name="alamat"></textarea><br></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td></td>
+					<td><input type="submit" value="kirim"></td>
+				</tr>
+			</table>		
+		</form>
+		<hr>
+		<span style="color:green">${scsMsg}</span>
 		
-		
-	</table>
+		<c:if test="${not empty param.errMsg}">
+			<span style="color:red">${param.errMsg}</span>
+		</c:if>
+		<hr>
+		<table border=1>
+			<thead>
+				<tr>
+					<th>Nama</th>
+					<th>Jenis Kelamin</th>
+					<th>Alamat</th>
+					<th>Aksi</th>
+				</tr>
+			</thead>
+			<tbody>
+				<jsp:useBean id="toServer" class="com.socket.ToServer"/>
+				<c:set var="daftarPegawai" value="${toServer.ambilPegawai('get')}"/>
+				<c:forEach items="${daftarPegawai}" var="pegawai">
+					<tr>
+						<td><c:out value="${pegawai.nama}" /></td>
+						<td><c:out value="${pegawai.jenkel}" /></td>
+						<td><c:out value="${pegawai.alamat}" /></td>
+						<td>
+							<a href="EditData?id=${pegawai.idPegawai}">Edit</a>
+							<a href="DeleteData?id=${pegawai.idPegawai}">Delete</a>					
+						</td>					
+					</tr>
+				</c:forEach>
+			</tbody>
+		</table>
+	</center>
 </body>
 </html>

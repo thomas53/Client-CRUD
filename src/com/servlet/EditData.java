@@ -57,8 +57,13 @@ public class EditData extends HttpServlet {
 			pegawai.setAlamat(request.getParameter("alamat"));
 			
 			// mengirim pesan ke server
-			String hasil = new ToServer().send("upd",pegawai);
-			request.setAttribute("msg",	hasil);
+			int hasil = new ToServer().send("upd",pegawai);
+			
+			if(hasil==1){
+				request.setAttribute("scsMsg",	"Data Berhasil Diedit");
+			}else{
+				request.setAttribute("errMsg",	"Data Gagal Diedit");
+			}
 			
 			RequestDispatcher rd = getServletContext().getRequestDispatcher("/index.jsp");
 			rd.forward(request, response);

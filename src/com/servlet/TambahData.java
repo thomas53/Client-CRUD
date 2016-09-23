@@ -48,8 +48,13 @@ public class TambahData extends HttpServlet {
 		pegawai.setAlamat(request.getParameter("alamat"));
 		
 		// mengirim pesan ke server
-		String hasil = new ToServer().send("ins",pegawai);
-		request.setAttribute("msg",	hasil);
+		int hasil = new ToServer().send("ins",pegawai);
+		
+		if(hasil==1){
+			request.setAttribute("scsMsg",	"Data Berhasil Ditambahkan");
+		}else{
+			request.setAttribute("errMsg",	"Data Gagal Ditambahkan");
+		}
 		
 		RequestDispatcher rd = getServletContext().getRequestDispatcher("/index.jsp");
 		rd.forward(request, response);

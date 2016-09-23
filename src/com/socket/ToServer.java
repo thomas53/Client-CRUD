@@ -12,10 +12,10 @@ import java.util.List;
 import com.model.ModelPegawai;
 
 public class ToServer {
-	public String send(String act,ModelPegawai peg){
+	public int send(String act,ModelPegawai peg){
 		String serverName = "127.0.0.1";
 		int port = 8888;
-		String msg = "";
+		int msg = 0;
 		
 		try {
 			Socket client = new Socket(serverName,port);
@@ -30,7 +30,7 @@ public class ToServer {
 			out.writeObject(pegawai);
 			
 			ObjectInputStream in = new ObjectInputStream(client.getInputStream());
-			msg = (String) in.readObject();
+			msg = (int) in.readObject();
 			client.close();
 		}catch (IOException e) {
 			e.printStackTrace();

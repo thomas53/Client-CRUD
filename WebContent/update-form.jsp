@@ -7,16 +7,40 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form action="EditData" method="POST">
-		<input type="hidden" name="idpegawai" value="${idpegawai}">
-		Nama : <br>
-		<input type="text" name="nama" value="${nama}"/><br>
-		Jenis Kelamin : <br>
-		<input type="text" name="jenkel" value="${jenkel}"><br>
-		Alamat : <br>
-		<textarea rows="5" cols="30" name="alamat">${alamat}</textarea><br>
-		<input type="submit" value="kirim">
-		<input type="submit" name="batal" value="batal">
-	</form>
+	<center>
+		<form action="EditData" method="POST">
+			<table style="text-align:left">
+				<tr>
+					<td>Nama</td>
+					<td>:</td>
+					<td>
+						<input type="hidden" name="idpegawai" value="${idpegawai}">
+						<input type="text" name="nama" value="${nama}"/>
+					</td>
+				</tr>
+				<tr>
+					<td>Jenis Kelamin</td>
+					<td>:</td>
+					<td>
+						<input type="text" name="jenkel" value="${jenkel}">
+					</td>
+				</tr>
+				<tr>
+					<td>Alamat</td>
+					<td>:</td>
+					<td><textarea rows="5" cols="30" name="alamat">${alamat}</textarea></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td></td>
+					<td>
+						<input type="submit" value="kirim">
+						<input type="submit" name="batal" value="batal">
+					</td>
+				</tr>
+			</table>		
+		</form>
+	</center>
+	
 </body>
 </html>
