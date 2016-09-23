@@ -2,6 +2,7 @@
 <%@page import="java.util.ArrayList"%>
 <%@page import="com.model.ModelPegawai"%>
 <%@page import="java.util.List"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -33,22 +34,23 @@
 			</tr>
 		</thead>
 		<tbody>
-			<%
-				List<ModelPegawai> daftarPegawai = new ArrayList<ModelPegawai>();
-				daftarPegawai = new ToServer().ambilPegawai("get");
-				for (ModelPegawai pegawai : daftarPegawai) {
-					out.print("<tr>");
-					out.print("<td>"+pegawai.getNama()+"</td>");
-					out.print("<td>"+pegawai.getJenkel()+"</td>");
-					out.print("<td>"+pegawai.getAlamat()+"</td>");
-					out.print("<td>");
-					out.print("<a href='EditData?id="+pegawai.getIdPegawai()+"'>edit</a>  ");
-					out.print("<a href='DeleteData?id="+pegawai.getIdPegawai()+"'>delete</a>  ");
-					out.print("</td>");
-					out.print("</tr>");
-				}
-			%>
+			<jsp:useBean id="toServer" class="com.socket.ToServer"/>
+			<c:set var="daftarPegawai" value="${toServer.ambilPegawai('get')}"/>
+			<c:forEach items="${daftarPegawai}" var="pegawai">
+				<tr>
+					<td><c:out value="${pegawai.nama}" /><td>
+					<td><c:out value="${pegawai.jenkel}" /><td>
+					<td><c:out value="${pegawai.alamat}" /><td>
+					<td>
+						<a href="EditData?id=${pegawai.idPegawai}">Edit</a>
+						<a href="DeleteData?id=${pegawai.idPegawai}">Delete</a>					
+					<td>					
+				</tr>
+			</c:forEach>
+			<jsp:useBean id="coba" class="com.app.Coba"/>
 		</tbody>
+		
+		
 	</table>
 </body>
 </html>
