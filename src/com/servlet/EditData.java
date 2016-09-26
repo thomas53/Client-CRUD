@@ -1,7 +1,6 @@
 package com.servlet;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -35,9 +34,9 @@ public class EditData extends HttpServlet {
 		int id = Integer.parseInt(request.getParameter("id"));
 		ModelPegawai pegawai = new ToServer().ambilPegawaiById(id);
 		
-		request.setAttribute("idpegawai", pegawai.getIdPegawai());
+		request.setAttribute("idpegawai", pegawai.getIdpegawai());
 		request.setAttribute("nama", pegawai.getNama());
-		request.setAttribute("jenkel", pegawai.getJenkel());
+		request.setAttribute("jenkel", pegawai.getJenis_kelamin());
 		request.setAttribute("alamat", pegawai.getAlamat());
 		RequestDispatcher rd = getServletContext().getRequestDispatcher("/update-form.jsp");
 		rd.forward(request, response);
@@ -47,13 +46,12 @@ public class EditData extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		PrintWriter out = response.getWriter();
 		if(request.getParameter("batal")==null){
 			// pesan yang dikirim ke server
 			ModelPegawai pegawai = new ModelPegawai();
-			pegawai.setIdPegawai(Integer.parseInt(request.getParameter("idpegawai")));
+			pegawai.setIdpegawai(Integer.parseInt(request.getParameter("idpegawai")));
 			pegawai.setNama(request.getParameter("nama"));
-			pegawai.setJenkel(request.getParameter("jenkel"));
+			pegawai.setJenis_kelamin(request.getParameter("jenkel"));
 			pegawai.setAlamat(request.getParameter("alamat"));
 			
 			// mengirim pesan ke server

@@ -53,16 +53,15 @@
 				</tr>
 			</thead>
 			<tbody>
-				<jsp:useBean id="toServer" class="com.socket.ToServer"/>
-				<c:set var="daftarPegawai" value="${toServer.ambilPegawai('get')}"/>
+				<c:set var="daftarPegawai" value="${daftarPegawai}"/>
 				<c:forEach items="${daftarPegawai}" var="pegawai">
 					<tr>
 						<td><c:out value="${pegawai.nama}" /></td>
-						<td><c:out value="${pegawai.jenkel}" /></td>
+						<td><c:out value="${pegawai.jenis_kelamin}" /></td>
 						<td><c:out value="${pegawai.alamat}" /></td>
 						<td>
-							<a href="EditData?id=${pegawai.idPegawai}">Edit</a>
-							<a href="DeleteData?id=${pegawai.idPegawai}">Delete</a>					
+							<a href="EditData?id=${pegawai.idpegawai}">Edit</a>
+							<a href="DeleteData?id=${pegawai.idpegawai}">Delete</a>					
 						</td>					
 					</tr>
 				</c:forEach>

@@ -1,6 +1,5 @@
 package com.socket;
 
-import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -86,7 +85,7 @@ public class ToServer {
 			// set data
 			ObjectOutputStream out = new ObjectOutputStream(client.getOutputStream());
 			ModelPegawai pegawai = new ModelPegawai();
-			pegawai.setIdPegawai(id);
+			pegawai.setIdpegawai(id);
 			out.writeObject(pegawai);
 			
 			// get data

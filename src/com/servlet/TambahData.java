@@ -1,7 +1,6 @@
 package com.servlet;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -44,7 +43,7 @@ public class TambahData extends HttpServlet {
 		// pesan yang dikirim ke server
 		ModelPegawai pegawai = new ModelPegawai();
 		pegawai.setNama(request.getParameter("nama"));
-		pegawai.setJenkel(request.getParameter("jenkel"));
+		pegawai.setJenis_kelamin(request.getParameter("jenkel"));
 		pegawai.setAlamat(request.getParameter("alamat"));
 		
 		// mengirim pesan ke server
@@ -56,7 +55,7 @@ public class TambahData extends HttpServlet {
 			request.setAttribute("errMsg",	"Data Gagal Ditambahkan");
 		}
 		
-		RequestDispatcher rd = getServletContext().getRequestDispatcher("/index.jsp");
+		RequestDispatcher rd = getServletContext().getRequestDispatcher("/Index");
 		rd.forward(request, response);
 		
 	}
