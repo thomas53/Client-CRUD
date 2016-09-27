@@ -1,28 +1,36 @@
 package com.servlet;
 
+import java.io.BufferedInputStream;
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.OutputStream;
+import java.io.PrintWriter;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.Part;
 
-import com.model.ModelPegawai;
+import com.model.ModelFile;
+import com.socket.SendFile;
 import com.socket.ToServer;
 
 /**
- * Servlet implementation class DeleteData
+ * Servlet implementation class UploadFile
  */
-@WebServlet("/DeleteData")
-public class DeleteData extends HttpServlet {
+@WebServlet("/UploadFile")
+@MultipartConfig
+public class UploadFile extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public DeleteData() {
+    public UploadFile() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -31,27 +39,16 @@ public class DeleteData extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// pesan yang dikirim ke server
-		ModelPegawai pegawai = new ModelPegawai();
-		pegawai.setIdpegawai(Integer.parseInt(request.getParameter("id")));
-		
-		// mengirim pesan ke server
-		int hasil = new ToServer().send("del",pegawai);
-		if(hasil==1){
-			request.setAttribute("scsMsg",	"Data Berhasil Dihapus");
-		}else{
-			request.setAttribute("errMsg",	"Data Gagal Dihapus");
-		}
-		response.sendRedirect("Index");
-//		RequestDispatcher rd = getServletContext().getRequestDispatcher("/index.jsp");
-//		rd.forward(request, response);
+		// TODO Auto-generated method stub
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		PrintWriter out = response.getWriter();
+		
+//		new SendFile().kirimFile(pathFile);
 	}
 
 }

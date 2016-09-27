@@ -8,22 +8,15 @@ public class ModelPegawai implements Serializable {
 	private String nama;
 	private String alamat;
 	private String jenis_kelamin;
+	private String fileFoto;
 	
-	public ModelPegawai(){
-		
-	}
-	
-	public ModelPegawai(int idpegawai, String nama, String alamat, String jenis_kelamin) {
-		this.idpegawai = idpegawai;
-		this.nama = nama;
-		this.alamat = alamat;
-		this.jenis_kelamin = jenis_kelamin;
-	}
+	public ModelPegawai(){}
 
-	public ModelPegawai( String nama, String alamat, String jenis_kelamin) {
+	public ModelPegawai(String nama, String alamat, String jenis_kelamin,String fileFoto) {
 		this.nama = nama;
 		this.alamat = alamat;
 		this.jenis_kelamin = jenis_kelamin;
+		this.fileFoto = fileFoto;
 	}
 
 	public int getIdpegawai() {
@@ -57,10 +50,14 @@ public class ModelPegawai implements Serializable {
 	public void setJenis_kelamin(String jenis_kelamin) {
 		this.jenis_kelamin = jenis_kelamin;
 	}
-	
-	
 
-	
+	public String getFileFoto() {
+		return fileFoto;
+	}
+
+	public void setFileFoto(String fileFoto) {
+		this.fileFoto = fileFoto;
+	}
 	
 	
 }

@@ -9,7 +9,7 @@
 </head>
 <body>
 	<center>
-		<form action="TambahData" method="POST">
+		<form action="TambahData" method="POST" enctype="multipart/form-data">
 			<table style="text-align:left">
 				<tr>
 					<td>Nama</td>
@@ -23,6 +23,11 @@
 						<input type="radio" id="l" checked=true name="jenkel" value="Laki-Laki"><label for="l">Laki-Laki</label>
 						<input type="radio" id="p" name="jenkel" value="Perempuan"><label for="p">Perempuan</label>
 					</td>
+				</tr>
+				<tr>
+					<td>foto</td>
+					<td>:</td>
+					<td><input type="file" name="fileFoto"/></td>
 				</tr>
 				<tr>
 					<td>Alamat</td>
@@ -49,6 +54,7 @@
 					<th>Nama</th>
 					<th>Jenis Kelamin</th>
 					<th>Alamat</th>
+					<th></th>
 					<th>Aksi</th>
 				</tr>
 			</thead>
@@ -59,6 +65,7 @@
 						<td><c:out value="${pegawai.nama}" /></td>
 						<td><c:out value="${pegawai.jenis_kelamin}" /></td>
 						<td><c:out value="${pegawai.alamat}" /></td>
+						<td><img style="width:60px;" alt="" src="${pegawai.fileFoto}"></td>
 						<td>
 							<a href="EditData?id=${pegawai.idpegawai}">Edit</a>
 							<a href="DeleteData?id=${pegawai.idpegawai}">Delete</a>					
@@ -68,5 +75,6 @@
 			</tbody>
 		</table>
 	</center>
+	
 </body>
 </html>

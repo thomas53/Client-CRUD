@@ -62,9 +62,9 @@ public class EditData extends HttpServlet {
 			}else{
 				request.setAttribute("errMsg",	"Data Gagal Diedit");
 			}
-			
-			RequestDispatcher rd = getServletContext().getRequestDispatcher("/index.jsp");
-			rd.forward(request, response);
+			response.sendRedirect("Index");
+//			RequestDispatcher rd = getServletContext().getRequestDispatcher("/index.jsp");
+//			rd.forward(request, response);
 		}else{
 			response.sendRedirect("index.jsp");
 		}

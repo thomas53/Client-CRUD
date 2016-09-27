@@ -1,19 +1,28 @@
 package com.socket;
 
+import java.io.BufferedInputStream;
 import java.io.DataOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.io.OutputStream;
 import java.net.Socket;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.model.ModelFile;
 import com.model.ModelPegawai;
 
 public class ToServer {
+	
+	private final String serverName = "127.0.0.1";
+	private final int port = 8888;
+	
 	public int send(String act,ModelPegawai peg){
-		String serverName = "127.0.0.1";
-		int port = 8888;
+		
 		int msg = 0;
 		
 		try {
@@ -44,9 +53,6 @@ public class ToServer {
 	public List<ModelPegawai> ambilPegawai(String act){
 		List<ModelPegawai> res = new ArrayList<ModelPegawai>();
 		
-		String serverName = "127.0.0.1";
-		int port = 8888;
-		
 		try {
 			Socket client = new Socket(serverName,port);
 			
@@ -71,10 +77,7 @@ public class ToServer {
 	
 	public ModelPegawai ambilPegawaiById(int id){
 		ModelPegawai res = new ModelPegawai();
-		
-		String serverName = "127.0.0.1";
-		int port = 8888;
-		
+				
 		try {
 			Socket client = new Socket(serverName,port);
 			
