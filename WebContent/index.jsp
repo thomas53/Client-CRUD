@@ -41,12 +41,8 @@
 				</tr>
 			</table>		
 		</form>
-		<hr>
-		<span style="color:green">${scsMsg}</span>
 		
-		<c:if test="${not empty param.errMsg}">
-			<span style="color:red">${param.errMsg}</span>
-		</c:if>
+		
 		<hr>
 		<table border=1>
 			<thead>

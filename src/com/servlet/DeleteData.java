@@ -37,14 +37,8 @@ public class DeleteData extends HttpServlet {
 		
 		// mengirim pesan ke server
 		int hasil = new ToServer().send("del",pegawai);
-		if(hasil==1){
-			request.setAttribute("scsMsg",	"Data Berhasil Dihapus");
-		}else{
-			request.setAttribute("errMsg",	"Data Gagal Dihapus");
-		}
+		
 		response.sendRedirect("Index");
-//		RequestDispatcher rd = getServletContext().getRequestDispatcher("/index.jsp");
-//		rd.forward(request, response);
 	}
 
 	/**

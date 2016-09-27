@@ -100,17 +100,8 @@ public class TambahData extends HttpServlet {
 		
 		// mengirim pesan ke server
 		int hasil = new ToServer().send("ins",pegawai);
-		
-		if(hasil==1){
-			request.setAttribute("scsMsg",	"Data Berhasil Ditambahkan");
-		}else{
-			request.setAttribute("errMsg",	"Data Gagal Ditambahkan");
-		}
 		response.sendRedirect("Index");
 
-
-//		RequestDispatcher rd = getServletContext().getRequestDispatcher("/index.jsp");
-//		rd.forward(request, response);
 		
 	}
 

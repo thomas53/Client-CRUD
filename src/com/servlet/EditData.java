@@ -57,14 +57,7 @@ public class EditData extends HttpServlet {
 			// mengirim pesan ke server
 			int hasil = new ToServer().send("upd",pegawai);
 			
-			if(hasil==1){
-				request.setAttribute("scsMsg",	"Data Berhasil Diedit");
-			}else{
-				request.setAttribute("errMsg",	"Data Gagal Diedit");
-			}
 			response.sendRedirect("Index");
-//			RequestDispatcher rd = getServletContext().getRequestDispatcher("/index.jsp");
-//			rd.forward(request, response);
 		}else{
 			response.sendRedirect("index.jsp");
 		}
