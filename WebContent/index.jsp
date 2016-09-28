@@ -30,6 +30,19 @@
 					<td><input type="file" name="fileFoto"/></td>
 				</tr>
 				<tr>
+					<td>Golongan</td>
+					<td>:</td>
+					<td>
+						<select name="golongan">
+							<option selected disabled>Pilih golongan</option>
+							<c:set var="daftarGolongan" value="${daftarGolongan}"/>
+							<c:forEach items="${daftarGolongan}" var="golongan">
+								<option value="${golongan.id}">${golongan.nama_golongan}</option>
+							</c:forEach>
+						</select>
+					</td>
+				</tr>
+				<tr>
 					<td>Alamat</td>
 					<td>:</td>
 					<td><textarea rows="5" cols="30" name="alamat"></textarea><br></td>
@@ -50,7 +63,8 @@
 					<th>Nama</th>
 					<th>Jenis Kelamin</th>
 					<th>Alamat</th>
-					<th></th>
+					<th>Foto</th>
+					<th>Gaji</th>
 					<th>Aksi</th>
 				</tr>
 			</thead>
@@ -62,6 +76,7 @@
 						<td><c:out value="${pegawai.jenis_kelamin}" /></td>
 						<td><c:out value="${pegawai.alamat}" /></td>
 						<td><img style="width:60px;" alt="" src="${pegawai.fileFoto}"></td>
+						<td><c:out value="${pegawai.golongan.gaji}" /></td>
 						<td>
 							<a href="EditData?id=${pegawai.idpegawai}">Edit</a>
 							<a href="DeleteData?id=${pegawai.idpegawai}">Delete</a>					

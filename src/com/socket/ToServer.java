@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.model.ModelFile;
+import com.model.ModelGolongan;
 import com.model.ModelPegawai;
 
 public class ToServer {
@@ -105,4 +106,33 @@ public class ToServer {
 		
 		return res;
 	}
+	
+	public List<ModelGolongan> ambilGolongan(){
+		List<ModelGolongan> res = new ArrayList<ModelGolongan>();
+		try {
+			Socket client = new Socket(serverName,port);
+			
+			// set aksi
+			DataOutputStream dataOut = new DataOutputStream(client.getOutputStream());
+			dataOut.writeUTF("get_gol");
+			
+			// get data
+			ObjectInputStream in = new ObjectInputStream(client.getInputStream());
+			res = (List<ModelGolongan>) in.readObject();
+			
+			client.close();
+		}catch (IOException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return res;
+	}
+	
+	public static void main(String[] args) {
+		ModelPegawai peg = new ToServer().ambilPegawaiById(26);
+		System.out.print(peg.getGolongan().getId());
+	}
+	
 }

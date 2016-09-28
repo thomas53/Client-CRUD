@@ -24,6 +24,7 @@ import org.apache.tomcat.util.http.fileupload.FileItem;
 import sun.misc.IOUtils;
 
 import com.model.ModelFile;
+import com.model.ModelGolongan;
 import com.model.ModelPegawai;
 import com.socket.ToServer;
 
@@ -83,6 +84,9 @@ public class TambahData extends HttpServlet {
 		pegawai.setNama(request.getParameter("nama"));
 		pegawai.setJenis_kelamin(request.getParameter("jenkel"));
 		pegawai.setAlamat(request.getParameter("alamat"));
+		ModelGolongan gol = new ModelGolongan();
+		gol.setId(Integer.parseInt(request.getParameter("golongan")));
+		pegawai.setGolongan(gol);
 		
 		// mengambil gambar
 		Part foto = request.getPart("fileFoto");
